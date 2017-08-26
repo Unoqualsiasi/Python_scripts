@@ -1,5 +1,7 @@
 #Example of IsolationForest on Iris dataset
 
+#Isolation Forest alogirthm is based on a paper by Liu et al. https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
+
 #!/usr/bin/env python3.6
 
 from sklearn.model_selection import train_test_split
