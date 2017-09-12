@@ -1,6 +1,7 @@
 ##Script to transpose out of core. TO be used when the file doesn't fit in memory.
 
-## USAGE : ./transpose.py input_file output_file
+
+#USAGE : ./transpose.py input_file output_file
 
 ```
 #!/usr/bin/env python3.6
