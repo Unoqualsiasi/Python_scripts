@@ -2,6 +2,7 @@
 
 ##USAGE : ./count_missing.py input_file
 
+```
 #!/usr/bin/env python3.6
 
 import sys
@@ -40,5 +41,5 @@ def perc_missing():
 perc_missing()
 
 os.remove('file_culo')
-
+```
 
