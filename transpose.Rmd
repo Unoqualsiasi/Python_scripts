@@ -2,6 +2,7 @@
 
 ## USAGE : ./transpose.py input_file output_file
 
+```
 #!/usr/bin/env python3.6
 
 import csv
@@ -21,3 +22,4 @@ def transpose_csv_out_of_core(csv_path=input, output_csv_path=output,delimiter_i
 
 
 transpose_csv_out_of_core()
+```
