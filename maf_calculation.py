@@ -3,7 +3,7 @@
 
 ##USAGE : ./maf_calculation.py input_file number_chromosome
 
-#INPUT : file with genotypes (0,1,2) nrow == number of individuals ncols == number of snps. Missing values encoded as 9
+#INPUT : file with genotypes (0,1,2) nrow == number of individuals ncols == number of snps. Missing values encoded as 9. The first column must contain the ID of the individual
 #OUTPUT : file with a MAF value for each snp column
 
 
