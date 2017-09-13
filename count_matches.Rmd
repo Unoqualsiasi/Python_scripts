@@ -66,7 +66,7 @@ with open(out) as file1, open(out1) as file2:
             if line1[i] == line2[i] :
                 common +=1
         print(float(common/float(len(line1))))
-
+#Remove the transposed files
 os.remove(out)
 os.remove(out1)
 ```
