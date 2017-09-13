@@ -4,7 +4,7 @@
 #USAGE: ./count_matches.py filea fileb
 #redirect to an output file if needed
 
-###N.B. It skips the first field
+###N.B. It skips the first field when working on lines
 
 ```
 #!/usr/bin/env python3.6
