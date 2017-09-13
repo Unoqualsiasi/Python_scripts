@@ -1,5 +1,7 @@
 #Scripts that counts the pairwise match of 2 files line by line and prints out the %of agreement
-#USAGE : ./count_matches.py filea fileb
+
+
+#USAGE: ./count_matches.py filea fileb
 #redirect to an output file if needed
 
 ###N.B. It skips the first field
