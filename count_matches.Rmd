@@ -1,0 +1,29 @@
+#Scripts that counts the pairwise match of 2 files line by line and prints out the %of agreement
+#USAGE : ./count_matches.py filea fileb
+£redirect to an output file if needed
+
+```
+#!/usr/bin/env python3.6
+# -*- coding: utf-8 -*- 
+
+import sys 
+import os
+import time
+import numpy as np 
+
+file1name=sys.argv[1]
+file2name=sys.argv[2]
+
+#The 2 files must have the same dimension
+#USAGE: ./count_matches file1 file2
+
+
+with open(file1name) as file1, open(file2name) as file2:
+    for line1, line2 in zip(file1, file2):
+        line1 = line1.strip().split(' ')[1:]
+        line2 = line2.strip().split(' ')[1:]
+        common = [i for i in line1 if i  in line2]   
+        print(float(len(common)/float(len(line1))))
+        #print(line1,line2) 
+
+```
