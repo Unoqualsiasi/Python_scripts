@@ -61,7 +61,8 @@ print('From here we count the columns!!!!')
 
 with open(out) as file1, open(out1) as file2:
     for line1, line2 in zip(file1, file2):
-        next(file1,file2)
+        next(file1)
+        next(file2)
         line1 = line1.strip().split(' ')[0:]
         line2 = line2.strip().split(' ')[0:]
         if len(line1) != len(line2):
