@@ -33,7 +33,7 @@ def PearsonCorr(x,y):
 
 #Improved version that makes use of the vectorization (by Roberto Antolin).
 
-```{python}
+```
 def PearsonCorr(x,y):
     """ (numpy vector, numpy vector) -> float
 
@@ -71,4 +71,5 @@ def PearsonCorr(x,y):
     Corr = covXY / (np.sqrt(Xstd * Ystd))
     # print(ind,s,missing,n,Xavg,Xavg2,Yavg,Yavg2,Xstd,Ystd,Corr)
     return Corr
-    ```
+```
+  
