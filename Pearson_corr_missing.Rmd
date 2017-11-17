@@ -31,7 +31,7 @@ def PearsonCorr(x,y):
 
 
 
-#Improved version that makes use of the vectorization (by Roberto Antolin).
+#Improved version that makes use of the 0 properties to speed up the whole thing avoiding the loop to check the condition (by Roberto Antolin).
 
 ```
 def PearsonCorr(x,y):
