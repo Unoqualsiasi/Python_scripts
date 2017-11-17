@@ -34,7 +34,7 @@ def PearsonCorr(x,y):
 #Improved version that makes use of the 0 properties to speed up the whole thing avoiding the loop to check the condition (by Roberto Antolin).
 
 ```
-def PearsonCorr(x,y):
+def PearsonCorrMissing(x,y):
     """ (numpy vector, numpy vector) -> float
 
     Calculate Pearson Correlation Coefficient of two arrays. This function skip
@@ -46,17 +46,14 @@ def PearsonCorr(x,y):
     Xavg2 = 0.0
     Yavg2 = 0.0
     covXY = 0.0
-    n = np.float64(0.0)
-    # n = np.float64(np.where(np.isnan(y)))
-    #print(np.size(y))
-    s = np.size(y)
-    missing = np.float64(np.sum(np.where(np.isnan(y))))
-    missing = 0.0
-    n = s - missing
+
+    xy = x*y
+    n = np.count_nonzero(~np.isnan(xy))
+
     Xavg = np.nansum(x)
     Yavg = np.nansum(y)
-    x_masked = x
-    y_masked = y
+    x_masked = x[:]
+    y_masked = y[:]
     x_masked[np.isnan(x_masked)] = 0
     y_masked[np.isnan(y_masked)] = 0
     Xavg2 = np.dot(x_masked,x_masked)
@@ -69,7 +66,7 @@ def PearsonCorr(x,y):
     Xstd = Xavg2 - n * Xavg * Xavg
     Ystd = Yavg2 - n * Yavg * Yavg
     Corr = covXY / (np.sqrt(Xstd * Ystd))
-    # print(ind,s,missing,n,Xavg,Xavg2,Yavg,Yavg2,Xstd,Ystd,Corr)
     return Corr
+    
 ```
   
