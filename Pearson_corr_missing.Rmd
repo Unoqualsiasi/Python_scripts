@@ -1,0 +1,74 @@
+#Function to compute the Pearson correlation for arrays with missing values
+
+```
+def PearsonCorr(x,y):
+    Corr = 0.0
+    Xavg = 0.0
+    Yavg = 0.0
+    Xavg2 = 0.0
+    Yavg2 = 0.0
+    covXY = 0.0
+    n = np.float64(0.0)
+    #LOOK THE BEAUTY OF THIS CONDITION!!!!!
+    for i in range (0,len(x)):
+        if np.isfinite(x[i]) and np.isfinite(y[i]) :
+            n += 1.0
+            Xavg += x[i]
+            Yavg += y[i]
+            Xavg2 += x[i] * x[i]
+            Yavg2 += y[i] * y[i]
+            covXY += x[i] * y[i]
+    Xavg /= n
+    Yavg /= n
+    covXY = covXY -n * Xavg * Yavg
+    Xstd = Xavg2 - n * Xavg * Xavg
+    Ystd = Yavg2 - n * Yavg * Yavg
+    Corr = covXY / (np.sqrt(Xstd * Ystd))
+    #print(n,Xavg,Xavg2,Yavg,Yavg2,Xstd,Ystd,Corr)
+    return Corr
+```
+
+
+
+
+#Improved version that makes use of the vectorization (by Roberto Antolin).
+
+```{python}
+def PearsonCorr(x,y):
+    """ (numpy vector, numpy vector) -> float
+
+    Calculate Pearson Correlation Coefficient of two arrays. This function skip
+    missing data and compute average and correlation accordingly
+    """
+    Corr = 0.0
+    Xavg = 0.0
+    Yavg = 0.0
+    Xavg2 = 0.0
+    Yavg2 = 0.0
+    covXY = 0.0
+    n = np.float64(0.0)
+    # n = np.float64(np.where(np.isnan(y)))
+    #print(np.size(y))
+    s = np.size(y)
+    missing = np.float64(np.sum(np.where(np.isnan(y))))
+    missing = 0.0
+    n = s - missing
+    Xavg = np.nansum(x)
+    Yavg = np.nansum(y)
+    x_masked = x
+    y_masked = y
+    x_masked[np.isnan(x_masked)] = 0
+    y_masked[np.isnan(y_masked)] = 0
+    Xavg2 = np.dot(x_masked,x_masked)
+    Yavg2 = np.dot(y_masked,y_masked)
+    covXY = np.dot(x_masked,y_masked)
+
+    Xavg /= n
+    Yavg /= n
+    covXY = covXY - n * Xavg * Yavg
+    Xstd = Xavg2 - n * Xavg * Xavg
+    Ystd = Yavg2 - n * Yavg * Yavg
+    Corr = covXY / (np.sqrt(Xstd * Ystd))
+    # print(ind,s,missing,n,Xavg,Xavg2,Yavg,Yavg2,Xstd,Ystd,Corr)
+    return Corr
+    ```
