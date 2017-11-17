@@ -34,38 +34,42 @@ def PearsonCorr(x,y):
 #Improved version that makes use of the 0 properties to speed up the whole thing avoiding the loop to check the condition (by Roberto Antolin).
 
 ```
-def PearsonCorr(x,y):
+ef PearsonCorr(x,y):
     """ (numpy vector, numpy vector) -> float
 
     Calculate Pearson Correlation Coefficient of two arrays. This function skip
     missing data and compute average and correlation accordingly
     """
-    Corr = 0.0
+    Corr1 = 0.0
     Xavg = 0.0
     Yavg = 0.0
     Xavg2 = 0.0
     Yavg2 = 0.0
     covXY = 0.0
 
+    # Count missing and mask nan values
     xy = x*y
-    n = np.count_nonzero(~np.isnan(xy))
+    n = np.float(np.count_nonzero(~np.isnan(xy)))
+    x_masked = np.where(np.isnan(xy), 0 , x)
+    y_masked = np.where(np.isnan(xy), 0 , y)
 
-    Xavg = np.nansum(x)
-    Yavg = np.nansum(y)
-    x_masked = x[:]
-    y_masked = y[:]
-    x_masked[np.isnan(x_masked)] = 0
-    y_masked[np.isnan(y_masked)] = 0
+    # Calculate elements of averages and cross-averages
+    Xavg = np.nansum(x_masked)
+    Yavg = np.nansum(y_masked)
     Xavg2 = np.dot(x_masked,x_masked)
     Yavg2 = np.dot(y_masked,y_masked)
     covXY = np.dot(x_masked,y_masked)
 
+    # Calculate correlations and cross-correlations
     Xavg /= n
     Yavg /= n
-    covXY = covXY - n * Xavg * Yavg
+    covXY -= n * Xavg * Yavg
     Xstd = Xavg2 - n * Xavg * Xavg
     Ystd = Yavg2 - n * Yavg * Yavg
+
+    # Correlation coefficient
     Corr = covXY / (np.sqrt(Xstd * Ystd))
+
     return Corr
     
 ```
