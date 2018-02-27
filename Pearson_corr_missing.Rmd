@@ -34,7 +34,7 @@ def PearsonCorr(x,y):
 #Improved version that makes use of the 0 properties to speed up the whole thing avoiding the loop to check the condition (by Roberto Antolin).
 
 ```
-ef PearsonCorr(x,y):
+def PearsonCorr(x,y):
     """ (numpy vector, numpy vector) -> float
 
     Calculate Pearson Correlation Coefficient of two arrays. This function skip
