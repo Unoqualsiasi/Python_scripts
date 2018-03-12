@@ -67,7 +67,7 @@ with open(out) as file1, open(out1) as file2:
         line2 = line2.strip().split(' ')[0:]
         if len(line1) != len(line2):
             print('Columns does have not the same dimension')
-            break
+            sys.exit()
         common = 0
         for i in range (0,len(line1)):
             if line1[i] == line2[i] :
