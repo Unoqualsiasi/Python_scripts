@@ -31,7 +31,7 @@ def conjugate_gradient(A, b, x0, TOLERANCE = 1.0e-10, MAX_ITERATIONS = 100):
         x = x + p*a
         ri = r0 - np.dot(A*a, p)
 
-        print i, np.linalg.norm(ri)
+        print(i, np.linalg.norm(ri))
 
         if np.linalg.norm(ri) < TOLERANCE:
             return x
