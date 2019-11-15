@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 
+#read first then reduce
 #print("Read Done")
 # Memory saving function credit to https://www.kaggle.com/gemartin/load-data-reduce-memory-usage
 def reduce_mem_usage(df):
